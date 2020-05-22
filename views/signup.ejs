@@ -1,0 +1,48 @@
+<%- include('parts/header') %>
+<%- include('parts/navbar') %>
+
+<div class="container text-center" style='margin: 50px auto 20px'>
+    <h3 style='margin-bottom: 15px'>Create Account</h3>
+
+    <% if(authErr) { %>
+        <p class="alert alert-danger">
+            <%= authErr %>
+        </p>
+    <% } %>
+
+    <form action="/signup" method="POST">
+        <input style='margin:5px auto' type="text" name="username" class='form-control' placeholder='Username'>
+        <% let usernameErr = validErrs.find(err => err.param === 'username')%>
+        <% if(usernameErr) { %>
+            <p class="alert alert-danger">
+                <%= usernameErr.msg %>
+            </p>
+        <% } %>
+        <input style='margin:5px auto' type="email" name="email" class='form-control' placeholder='Email'>
+        <% let emailErr = validErrs.find(err => err.param === 'email')%>
+        <% if(emailErr) { %>
+            <p class="alert alert-danger">
+                <%= emailErr.msg %>
+            </p>
+        <% } %>
+        <input style='margin:5px auto' type="password" name="password" class='form-control' placeholder='Password'>
+        <% let passwordErr = validErrs.find(err => err.param === 'password')%>
+        <% if(passwordErr) { %>
+            <p class="alert alert-danger">
+                <%= passwordErr.msg %>
+            </p>
+        <% } %>
+        <input style='margin:5px auto' type="password" name="confirmPassword" class='form-control' placeholder='Confirm Password'>
+        <% let confirmPassErr = validErrs.find(err => err.param === 'confirmPassword')%>
+        <% if(confirmPassErr) { %>
+            <p class="alert alert-danger">
+                <%= confirmPassErr.msg %>
+            </p>
+        <% } %>
+        <input style='margin:5px auto' type="submit" value="Create Account" class='btn btn-primary'>
+    </form>
+
+    <p>You already have an account? <a href="/signin">Signin</a></p>
+</div>
+
+<%- include('parts/footer') %>

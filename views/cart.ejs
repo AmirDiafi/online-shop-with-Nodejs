@@ -1,0 +1,64 @@
+<%- include('parts/header') %>
+<%- include('parts/navbar') %>
+
+<style>
+    tr, td, tbody, thead, table{
+        border: 1px solid #333;
+        border-radius: 10px;
+        padding: 10px
+    }
+    table{
+        border-radius: 10px;
+        margin: 30px auto;
+        padding: 10px;
+        border: 1px solid #333
+    }
+</style>
+
+<div class="container" >
+    <% if(cartEditErr) { %>
+        <p class="alert alert-danger">
+            <%= cartEditErr.msg %>
+        </p>
+    <% } %>
+
+    <% if(Carts.length === 0) { %>
+        <p class="alert alert-danger">
+            There is no Carts show
+        </p>
+    <%} else { %>
+
+    <table>
+        <thead>
+            <td>No</td>
+            <td>Product name</td>
+            <td>Price</td>
+            <td>Amount</td>
+            <td>Total</td>
+            <td></td>
+        </thead>
+        <tbody>
+            <% for(let i=0; i<Carts.length;i++) { %>
+                <tr>
+                    <td><%=i+1%></td>
+                    <td><%=Carts[i].name%></td>
+                    <td><%=Carts[i].price%> $</td>
+                    <form method="POST">
+                        <td><input type="number" name='amount' class="form-control" value="<%=Carts[i].amount%>"></td>
+                        <td><%= Carts[i].price * Carts[i].amount %>$</td>
+                        <td>
+                            <input type="hidden" name='cartId' value="<%= Carts[i]._id%>">
+                            <input type="submit" value="Save" class="btn btn-success" formaction="/cart/save">
+                            <input type="submit" value="Delete" class="btn btn-danger" formaction="/cart/delete">
+                        </td>
+                    </form>
+                </tr>
+            <%}%>
+        </tbody>
+    </table>
+    <% } %>
+
+
+</div>
+
+<%- include('parts/footer') %>

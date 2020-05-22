@@ -1,0 +1,31 @@
+<%- include('parts/header') %>
+<%- include('parts/navbar') %>
+
+<div class="container text-center" style='margin: 50px auto 20px'>
+    <h3 style='margin-bottom: 15px'>Signin</h3>
+    <% if(authErr) { %>
+        <p class="alert alert-danger">
+            <%= authErr %>
+        </p>
+    <% } %>
+    <form action="/signin" method="POST">
+        <input style='margin:5px auto' type="email" name="email" class='form-control' placeholder='Email'>
+        <% let validEmail = validErrs.find(err => err.param === 'email') %>
+        <% if(validEmail) { %>
+            <p class="alert alert-danger">
+                <%= validEmail.msg %>
+            </p> 
+        <% } %>
+        <input style='margin:5px auto' type="password" name="password" class='form-control' placeholder='Password'>
+        <% let validPass = validErrs.find(err => err.param === 'password') %>
+        <% if(validPass) { %>
+            <p class="alert alert-danger">
+                <%= validPass.msg %>
+            </p> 
+        <% } %>
+        <input style='margin:5px auto' type="submit" value="Signin" class='btn btn-primary'>
+    </form>
+    <p>You donnot have an account? <a href="/signup">Signup</a></p>
+</div>
+
+<%- include('parts/footer') %>
