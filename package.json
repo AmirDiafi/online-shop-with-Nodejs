@@ -7,6 +7,10 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "set UV_THREADPOOL_SIZE = 2 && node main.js"
   },
+  "engines": {
+    "node": "12.18.1",
+    "npm": "6.14.8"
+  },
   "author": "Amir",
   "license": "ISC",
   "dependencies": {
