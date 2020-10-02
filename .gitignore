@@ -1,5 +1,1 @@
-//create a .gitignore file and add the following in it
-# dependencies
-.gitignore
-node_modules
-npm-debug.log
+/node_modules
