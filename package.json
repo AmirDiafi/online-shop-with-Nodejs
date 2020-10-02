@@ -5,12 +5,8 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "set UV_THREADPOOL_SIZE = 2 && node main.js"
-  },
-  "engines": {
-    "node": "12.18.1",
-    "npm": "6.14.8"
-  },
+    "start": "node main.js"
+  }
   "author": "Amir",
   "license": "ISC",
   "dependencies": {
@@ -25,5 +21,9 @@
     "express-validator": "^6.4.0",
     "mongodb": "^3.5.5",
     "mongoose": "^5.9.5"
+  },
+  "engines": {
+    "node": "12.18.1",
+    "npm": "6.14.8"
   }
 }
